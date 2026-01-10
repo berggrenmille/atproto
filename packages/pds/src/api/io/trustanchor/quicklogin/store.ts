@@ -15,6 +15,7 @@ export type QuickLoginSession = {
   updatedAt: string
   expiresAt: string
   linkDid?: string | null
+  allowCreate?: boolean
   result?: QuickLoginResult
   error?: string
 }

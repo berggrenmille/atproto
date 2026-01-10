@@ -10,7 +10,8 @@
         "schema": {
           "type": "object",
           "properties": {
-            "link": { "type": "boolean" }
+            "link": { "type": "boolean" },
+            "allowCreate": { "type": "boolean" }
           }
         }
       },

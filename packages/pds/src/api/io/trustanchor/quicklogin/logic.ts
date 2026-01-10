@@ -51,11 +51,13 @@ export const runQuickLogin = async ({
   payload,
   authDid,
   reqIp,
+  allowCreate,
 }: {
   ctx: AppContext
   payload: QuickLoginPayload
   authDid: string | null
   reqIp: string
+  allowCreate?: boolean
 }): Promise<QuickLoginResult> => {
   if (ctx.cfg.quicklogin && !ctx.cfg.quicklogin.enabled) {
     throw new InvalidRequestError('QuickLogin disabled')
@@ -128,6 +130,10 @@ export const runQuickLogin = async ({
       provider,
       externalId,
     }
+  }
+
+  if (allowCreate === false) {
+    throw new InvalidRequestError('QuickLogin account creation not allowed')
   }
 
   if (ctx.cfg.quicklogin && ctx.cfg.quicklogin.enabled) {

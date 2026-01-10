@@ -18,6 +18,7 @@ export type QueryParams = {}
 
 export interface InputSchema {
   link?: boolean
+  allowCreate?: boolean
 }
 
 export interface OutputSchema {

@@ -15038,6 +15038,9 @@ export const schemaDict = {
               link: {
                 type: 'boolean',
               },
+              allowCreate: {
+                type: 'boolean',
+              },
             },
           },
         },

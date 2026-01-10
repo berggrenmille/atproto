@@ -26,6 +26,7 @@ export default function (server: Server, ctx: AppContext) {
       }
 
       const link = Boolean(input?.body?.link)
+      const allowCreate = input?.body?.allowCreate !== false
       const signedInDid: string | null = auth?.credentials?.did ?? null
       if (link && !signedInDid) {
         throw new InvalidRequestError('Authentication required to link')
@@ -89,6 +90,7 @@ export default function (server: Server, ctx: AppContext) {
         updatedAt: now.toISOString(),
         expiresAt,
         linkDid: link ? signedInDid : null,
+        allowCreate,
       })
 
       return {

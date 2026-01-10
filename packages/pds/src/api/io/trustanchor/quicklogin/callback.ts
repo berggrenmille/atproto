@@ -45,6 +45,7 @@ export default function (server: Server, ctx: AppContext) {
           payload: body,
           authDid: session.linkDid ?? null,
           reqIp: req.ip,
+          allowCreate: session.allowCreate,
         })
         await store.set(sessionId, {
           ...session,
