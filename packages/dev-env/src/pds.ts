@@ -15,7 +15,7 @@ export class TestPds {
     public url: string,
     public port: number,
     public server: pds.PDS,
-  ) {}
+  ) { }
 
   static async create(config: PdsConfig): Promise<TestPds> {
     const plcRotationKey = await Secp256k1Keypair.create({ exportable: true })
@@ -62,6 +62,17 @@ export class TestPds {
       privacyPolicyUrl: 'https://bsky.social/about/support/privacy-policy',
       supportUrl: 'https://blueskyweb.zendesk.com/hc/en-us',
       ...config,
+    }
+    if (process.env.PDS_HOSTNAME) {
+      env.hostname = process.env.PDS_HOSTNAME
+    }
+    if (process.env.PDS_SERVICE_DID) {
+      env.serviceDid = process.env.PDS_SERVICE_DID
+    }
+    env.quickloginEnabled = process.env.PDS_QUICKLOGIN_ENABLED === 'true'
+    env.quickloginAllowAll = process.env.PDS_QUICKLOGIN_ALLOW_ALL === 'true'
+    if (process.env.PDS_QUICKLOGIN_API_BASE_URL) {
+      env.quickloginApiBaseUrl = process.env.PDS_QUICKLOGIN_API_BASE_URL
     }
     const cfg = pds.envToCfg(env)
     const secrets = pds.envToSecrets(env)

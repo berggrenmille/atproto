@@ -12,6 +12,7 @@ import * as refreshToken from './refresh-token'
 import * as repoRoot from './repo-root'
 import * as token from './token'
 import * as usedRefreshToken from './used-refresh-token'
+import * as externalAuth from './external-auth'
 
 export type DatabaseSchema = actor.PartialDB &
   account.PartialDB &
@@ -26,7 +27,8 @@ export type DatabaseSchema = actor.PartialDB &
   repoRoot.PartialDB &
   inviteCode.PartialDB &
   lexicon.PartialDB &
-  emailToken.PartialDB
+  emailToken.PartialDB &
+  externalAuth.PartialDB
 
 export type { Actor, ActorEntry } from './actor'
 export type { Account, AccountEntry } from './account'
@@ -41,3 +43,4 @@ export type { RefreshToken } from './refresh-token'
 export type { AppPassword } from './app-password'
 export type { InviteCode, InviteCodeUse } from './invite-code'
 export type { EmailToken, EmailTokenPurpose } from './email-token'
+export type { ExternalAuth } from './external-auth'

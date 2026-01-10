@@ -328,6 +328,13 @@ export const envToCfg = (env: ServerEnvironment): ServerConfig => {
     lexiconCfg.didAuthority = env.lexiconDidAuthority
   }
 
+  // quicklogin (demo)
+  const quickloginCfg: ServerConfig['quicklogin'] = {
+    enabled: !!env.quickloginEnabled,
+    allowAll: !!env.quickloginAllowAll,
+    apiBaseUrl: env.quickloginApiBaseUrl || 'https://lab.tagroot.io',
+  }
+
   return {
     service: serviceCfg,
     db: dbCfg,
@@ -349,6 +356,7 @@ export const envToCfg = (env: ServerEnvironment): ServerConfig => {
     lexicon: lexiconCfg,
     proxy: proxyCfg,
     oauth: oauthCfg,
+    quicklogin: quickloginCfg,
   }
 }
 
@@ -373,6 +381,7 @@ export type ServerConfig = {
   proxy: ProxyConfig
   oauth: OAuthConfig
   lexicon: LexiconResolverConfig
+  quicklogin: QuickLoginConfig
 }
 
 export type ServiceConfig = {
@@ -474,6 +483,12 @@ export type OAuthConfig = {
 
 export type LexiconResolverConfig = {
   didAuthority?: `did:${string}:${string}`
+}
+
+export type QuickLoginConfig = {
+  enabled: boolean
+  allowAll: boolean
+  apiBaseUrl: string
 }
 
 export type InvitesConfig =

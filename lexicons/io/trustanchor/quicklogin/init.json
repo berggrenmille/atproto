@@ -1,0 +1,39 @@
+{
+  "lexicon": 1,
+  "id": "io.trustanchor.quicklogin.init",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Register a backend QuickLogin service and return a serviceId.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "link": { "type": "boolean" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": [
+            "sessionId",
+            "sessionToken",
+            "serviceId",
+            "expiresAt",
+            "providerBaseUrl"
+          ],
+          "properties": {
+            "sessionId": { "type": "string" },
+            "sessionToken": { "type": "string" },
+            "serviceId": { "type": "string" },
+            "expiresAt": { "type": "string", "format": "datetime" },
+            "providerBaseUrl": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    }
+  }
+}

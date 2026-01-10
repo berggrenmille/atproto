@@ -1,0 +1,63 @@
+{
+  "lexicon": 1,
+  "id": "io.trustanchor.quicklogin.callback",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Callback endpoint for QuickLogin backend mode.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["SessionId"],
+          "properties": {
+            "SessionId": { "type": "string" },
+            "Id": { "type": "string" },
+            "Key": { "type": "string" },
+            "Provider": { "type": "string" },
+            "Domain": { "type": "string" },
+            "JID": { "type": "string" },
+            "ClientKeyName": { "type": "string" },
+            "Created": { "type": "integer" },
+            "Updated": { "type": "integer" },
+            "From": { "type": "integer" },
+            "To": { "type": "integer" },
+            "HasClientPublicKey": { "type": "boolean" },
+            "ClientPubKey": { "type": "string" },
+            "HasClientSignature": { "type": "boolean" },
+            "ClientSignature": { "type": "string" },
+            "ServerSignature": { "type": "string" },
+            "State": { "type": "string" },
+            "Properties": { "type": "unknown" },
+            "Attachments": {
+              "type": "array",
+              "items": {
+                "type": "ref",
+                "ref": "lex:io.trustanchor.quicklogin.callback#attachment"
+              }
+            }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ok": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "attachment": {
+      "type": "object",
+      "properties": {
+        "Id": { "type": "string" },
+        "ContentType": { "type": "string" },
+        "FileName": { "type": "string" },
+        "Url": { "type": "string" },
+        "BackEndUrl": { "type": "string" }
+      }
+    }
+  }
+}

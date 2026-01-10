@@ -1,0 +1,59 @@
+{
+  "lexicon": 1,
+  "id": "io.trustanchor.quicklogin.login",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "QuickLogin link/login/create via external id (JID). Demo mode accepts all.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["JID"],
+          "properties": {
+            "JID": { "type": "string" },
+            "Provider": { "type": "string" },
+            "Domain": { "type": "string" },
+            "Key": { "type": "string" },
+            "Properties": { "type": "unknown" },
+            "Attachments": {
+              "type": "array",
+              "items": {
+                "type": "ref",
+                "ref": "lex:io.trustanchor.quicklogin.login#attachment"
+              }
+            }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["did", "handle", "linked", "created"],
+          "properties": {
+            "accessJwt": { "type": "string" },
+            "refreshJwt": { "type": "string" },
+            "handle": { "type": "string", "format": "handle" },
+            "did": { "type": "string", "format": "did" },
+            "didDoc": { "type": "unknown" },
+            "linked": { "type": "boolean" },
+            "created": { "type": "boolean" },
+            "provider": { "type": "string" },
+            "externalId": { "type": "string" }
+          }
+        }
+      }
+    },
+    "attachment": {
+      "type": "object",
+      "properties": {
+        "Id": { "type": "string" },
+        "ContentType": { "type": "string" },
+        "FileName": { "type": "string" },
+        "Url": { "type": "string" },
+        "BackEndUrl": { "type": "string" }
+      }
+    }
+  }
+}

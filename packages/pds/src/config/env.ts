@@ -154,6 +154,11 @@ export function readEnv() {
 
     // lexicon resolution
     lexiconDidAuthority: envStr('PDS_LEXICON_AUTHORITY_DID'),
+
+    // quicklogin (demo)
+    quickloginEnabled: envBool('PDS_QUICKLOGIN_ENABLED'),
+    quickloginAllowAll: envBool('PDS_QUICKLOGIN_ALLOW_ALL'),
+    quickloginApiBaseUrl: envStr('PDS_QUICKLOGIN_API_BASE_URL'),
   }
 }
 

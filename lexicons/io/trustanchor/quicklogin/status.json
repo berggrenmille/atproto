@@ -1,0 +1,34 @@
+{
+  "lexicon": 1,
+  "id": "io.trustanchor.quicklogin.status",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Get status for a QuickLogin session.",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["sessionId", "sessionToken"],
+          "properties": {
+            "sessionId": { "type": "string" },
+            "sessionToken": { "type": "string" }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": { "type": "string" },
+            "result": { "type": "unknown" },
+            "error": { "type": "string" },
+            "expiresAt": { "type": "string", "format": "datetime" }
+          }
+        }
+      }
+    }
+  }
+}

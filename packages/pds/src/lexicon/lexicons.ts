@@ -14911,6 +14911,318 @@ export const schemaDict = {
       },
     },
   },
+  IoTrustanchorQuickloginCallback: {
+    lexicon: 1,
+    id: 'io.trustanchor.quicklogin.callback',
+    defs: {
+      main: {
+        type: 'procedure',
+        description: 'Callback endpoint for QuickLogin backend mode.',
+        input: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['SessionId'],
+            properties: {
+              SessionId: {
+                type: 'string',
+              },
+              Id: {
+                type: 'string',
+              },
+              Key: {
+                type: 'string',
+              },
+              Provider: {
+                type: 'string',
+              },
+              Domain: {
+                type: 'string',
+              },
+              JID: {
+                type: 'string',
+              },
+              ClientKeyName: {
+                type: 'string',
+              },
+              Created: {
+                type: 'integer',
+              },
+              Updated: {
+                type: 'integer',
+              },
+              From: {
+                type: 'integer',
+              },
+              To: {
+                type: 'integer',
+              },
+              HasClientPublicKey: {
+                type: 'boolean',
+              },
+              ClientPubKey: {
+                type: 'string',
+              },
+              HasClientSignature: {
+                type: 'boolean',
+              },
+              ClientSignature: {
+                type: 'string',
+              },
+              ServerSignature: {
+                type: 'string',
+              },
+              State: {
+                type: 'string',
+              },
+              Properties: {
+                type: 'unknown',
+              },
+              Attachments: {
+                type: 'array',
+                items: {
+                  type: 'ref',
+                  ref: 'lex:io.trustanchor.quicklogin.callback#attachment',
+                },
+              },
+            },
+          },
+        },
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            properties: {
+              ok: {
+                type: 'boolean',
+              },
+            },
+          },
+        },
+      },
+      attachment: {
+        type: 'object',
+        properties: {
+          Id: {
+            type: 'string',
+          },
+          ContentType: {
+            type: 'string',
+          },
+          FileName: {
+            type: 'string',
+          },
+          Url: {
+            type: 'string',
+          },
+          BackEndUrl: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  },
+  IoTrustanchorQuickloginInit: {
+    lexicon: 1,
+    id: 'io.trustanchor.quicklogin.init',
+    defs: {
+      main: {
+        type: 'procedure',
+        description:
+          'Register a backend QuickLogin service and return a serviceId.',
+        input: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            properties: {
+              link: {
+                type: 'boolean',
+              },
+            },
+          },
+        },
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: [
+              'sessionId',
+              'sessionToken',
+              'serviceId',
+              'expiresAt',
+              'providerBaseUrl',
+            ],
+            properties: {
+              sessionId: {
+                type: 'string',
+              },
+              sessionToken: {
+                type: 'string',
+              },
+              serviceId: {
+                type: 'string',
+              },
+              expiresAt: {
+                type: 'string',
+                format: 'datetime',
+              },
+              providerBaseUrl: {
+                type: 'string',
+                format: 'uri',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  IoTrustanchorQuickloginLogin: {
+    lexicon: 1,
+    id: 'io.trustanchor.quicklogin.login',
+    defs: {
+      main: {
+        type: 'procedure',
+        description:
+          'QuickLogin link/login/create via external id (JID). Demo mode accepts all.',
+        input: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['JID'],
+            properties: {
+              JID: {
+                type: 'string',
+              },
+              Provider: {
+                type: 'string',
+              },
+              Domain: {
+                type: 'string',
+              },
+              Key: {
+                type: 'string',
+              },
+              Properties: {
+                type: 'unknown',
+              },
+              Attachments: {
+                type: 'array',
+                items: {
+                  type: 'ref',
+                  ref: 'lex:io.trustanchor.quicklogin.login#attachment',
+                },
+              },
+            },
+          },
+        },
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['did', 'handle', 'linked', 'created'],
+            properties: {
+              accessJwt: {
+                type: 'string',
+              },
+              refreshJwt: {
+                type: 'string',
+              },
+              handle: {
+                type: 'string',
+                format: 'handle',
+              },
+              did: {
+                type: 'string',
+                format: 'did',
+              },
+              didDoc: {
+                type: 'unknown',
+              },
+              linked: {
+                type: 'boolean',
+              },
+              created: {
+                type: 'boolean',
+              },
+              provider: {
+                type: 'string',
+              },
+              externalId: {
+                type: 'string',
+              },
+            },
+          },
+        },
+      },
+      attachment: {
+        type: 'object',
+        properties: {
+          Id: {
+            type: 'string',
+          },
+          ContentType: {
+            type: 'string',
+          },
+          FileName: {
+            type: 'string',
+          },
+          Url: {
+            type: 'string',
+          },
+          BackEndUrl: {
+            type: 'string',
+          },
+        },
+      },
+    },
+  },
+  IoTrustanchorQuickloginStatus: {
+    lexicon: 1,
+    id: 'io.trustanchor.quicklogin.status',
+    defs: {
+      main: {
+        type: 'procedure',
+        description: 'Get status for a QuickLogin session.',
+        input: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['sessionId', 'sessionToken'],
+            properties: {
+              sessionId: {
+                type: 'string',
+              },
+              sessionToken: {
+                type: 'string',
+              },
+            },
+          },
+        },
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['status'],
+            properties: {
+              status: {
+                type: 'string',
+              },
+              result: {
+                type: 'unknown',
+              },
+              error: {
+                type: 'string',
+              },
+              expiresAt: {
+                type: 'string',
+                format: 'datetime',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   ToolsOzoneCommunicationCreateTemplate: {
     lexicon: 1,
     id: 'tools.ozone.communication.createTemplate',
@@ -20384,6 +20696,10 @@ export const ids = {
     'com.atproto.temp.requestPhoneVerification',
   ComAtprotoTempRevokeAccountCredentials:
     'com.atproto.temp.revokeAccountCredentials',
+  IoTrustanchorQuickloginCallback: 'io.trustanchor.quicklogin.callback',
+  IoTrustanchorQuickloginInit: 'io.trustanchor.quicklogin.init',
+  IoTrustanchorQuickloginLogin: 'io.trustanchor.quicklogin.login',
+  IoTrustanchorQuickloginStatus: 'io.trustanchor.quicklogin.status',
   ToolsOzoneCommunicationCreateTemplate:
     'tools.ozone.communication.createTemplate',
   ToolsOzoneCommunicationDefs: 'tools.ozone.communication.defs',
