@@ -20,7 +20,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "lex:io.trustanchor.quicklogin.login#attachment"
+                "ref": "#attachment"
               }
             }
           }

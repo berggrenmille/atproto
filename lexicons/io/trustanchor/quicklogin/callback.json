@@ -33,7 +33,7 @@
               "type": "array",
               "items": {
                 "type": "ref",
-                "ref": "lex:io.trustanchor.quicklogin.callback#attachment"
+                "ref": "#attachment"
               }
             }
           }
