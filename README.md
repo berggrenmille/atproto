@@ -4,6 +4,12 @@ Welcome friends!
 
 This repository contains Bluesky's reference implementation of AT Protocol, and of the `app.bsky` microblogging application service backend.
 
+## QuickLogin Demo Fork
+
+This fork is a demo of QuickLogin (ID App) integration for a PDS. It keeps the upstream reference implementation intact and adds the QuickLogin endpoints and config needed for demos.
+
+See [README.quicklogin.md](./README.quicklogin.md) for setup, configuration, and demo flows.
+
 ## What is in here?
 
 **TypeScript Packages:**
