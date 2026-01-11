@@ -1,6 +1,10 @@
 import crypto from 'node:crypto'
 import { MINUTE } from '@atproto/common'
-import { InvalidRequestError, UpstreamFailureError } from '@atproto/xrpc-server'
+import {
+  AuthRequiredError,
+  InvalidRequestError,
+  UpstreamFailureError,
+} from '@atproto/xrpc-server'
 import { AppContext } from '../../../../context'
 import { Server } from '../../../../lexicon'
 import {
@@ -19,7 +23,9 @@ export default function (server: Server, ctx: AppContext) {
         calcKey: ({ req }: any) => req.ip,
       },
     ],
-    auth: ctx.authVerifier.userServiceAuthOptional,
+    auth: ctx.authVerifier.authorizationOrAdminTokenOptional({
+      authorize: () => {},
+    }),
     handler: async ({ input, auth, req }: any) => {
       if (ctx.cfg.quicklogin && !ctx.cfg.quicklogin.enabled) {
         throw new InvalidRequestError('QuickLogin disabled')
@@ -29,7 +35,7 @@ export default function (server: Server, ctx: AppContext) {
       const allowCreate = input?.body?.allowCreate !== false
       const signedInDid: string | null = auth?.credentials?.did ?? null
       if (link && !signedInDid) {
-        throw new InvalidRequestError('Authentication required to link')
+        throw new AuthRequiredError('Authentication required to link')
       }
 
       const sessionId = crypto.randomUUID()
