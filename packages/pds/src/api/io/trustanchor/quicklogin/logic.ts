@@ -268,7 +268,7 @@ function buildMappingMeta(payload: QuickLoginPayload, reqIp: string) {
   })
 }
 
-function getProviderKey(ctx: AppContext) {
+export function getProviderKey(ctx: AppContext) {
   const baseUrl = ctx.cfg.quicklogin?.apiBaseUrl || 'https://lab.tagroot.io'
   const normalized = normalizeProviderBaseUrl(baseUrl)
   return new URL(normalized).hostname

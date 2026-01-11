@@ -14,6 +14,19 @@ export const getByProviderExternalId = async (
     .executeTakeFirst()
 }
 
+export const getByProviderDid = async (
+  db: AccountDb,
+  provider: string,
+  did: string,
+) => {
+  return db.db
+    .selectFrom('external_auth')
+    .selectAll()
+    .where('provider', '=', provider)
+    .where('did', '=', did)
+    .executeTakeFirst()
+}
+
 export const createMapping = async (
   db: AccountDb,
   provider: string,
@@ -72,4 +85,16 @@ export const createMapping = async (
 
 export const deleteByDid = async (db: AccountDb, did: string) => {
   await db.db.deleteFrom('external_auth').where('did', '=', did).execute()
+}
+
+export const deleteByProviderDid = async (
+  db: AccountDb,
+  provider: string,
+  did: string,
+) => {
+  await db.db
+    .deleteFrom('external_auth')
+    .where('provider', '=', provider)
+    .where('did', '=', did)
+    .execute()
 }

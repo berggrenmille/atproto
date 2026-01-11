@@ -1,0 +1,20 @@
+{
+  "lexicon": 1,
+  "id": "io.trustanchor.quicklogin.unlink",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Unlink QuickLogin identity from the current account.",
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["ok"],
+          "properties": {
+            "ok": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

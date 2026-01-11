@@ -1,0 +1,21 @@
+{
+  "lexicon": 1,
+  "id": "io.trustanchor.quicklogin.getLink",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Get QuickLogin link status for the current account.",
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["linked"],
+          "properties": {
+            "linked": { "type": "boolean" },
+            "provider": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

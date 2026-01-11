@@ -217,9 +217,11 @@ import * as ComAtprotoTempFetchLabels from './types/com/atproto/temp/fetchLabels
 import * as ComAtprotoTempRequestPhoneVerification from './types/com/atproto/temp/requestPhoneVerification.js'
 import * as ComAtprotoTempRevokeAccountCredentials from './types/com/atproto/temp/revokeAccountCredentials.js'
 import * as IoTrustanchorQuickloginCallback from './types/io/trustanchor/quicklogin/callback.js'
+import * as IoTrustanchorQuickloginGetLink from './types/io/trustanchor/quicklogin/getLink.js'
 import * as IoTrustanchorQuickloginInit from './types/io/trustanchor/quicklogin/init.js'
 import * as IoTrustanchorQuickloginLogin from './types/io/trustanchor/quicklogin/login.js'
 import * as IoTrustanchorQuickloginStatus from './types/io/trustanchor/quicklogin/status.js'
+import * as IoTrustanchorQuickloginUnlink from './types/io/trustanchor/quicklogin/unlink.js'
 import * as ToolsOzoneCommunicationCreateTemplate from './types/tools/ozone/communication/createTemplate.js'
 import * as ToolsOzoneCommunicationDeleteTemplate from './types/tools/ozone/communication/deleteTemplate.js'
 import * as ToolsOzoneCommunicationListTemplates from './types/tools/ozone/communication/listTemplates.js'
@@ -3199,6 +3201,18 @@ export class IoTrustanchorQuickloginNS {
     return this._server.xrpc.method(nsid, cfg)
   }
 
+  getLink<A extends Auth = void>(
+    cfg: MethodConfigOrHandler<
+      A,
+      IoTrustanchorQuickloginGetLink.QueryParams,
+      IoTrustanchorQuickloginGetLink.HandlerInput,
+      IoTrustanchorQuickloginGetLink.HandlerOutput
+    >,
+  ) {
+    const nsid = 'io.trustanchor.quicklogin.getLink' // @ts-ignore
+    return this._server.xrpc.method(nsid, cfg)
+  }
+
   init<A extends Auth = void>(
     cfg: MethodConfigOrHandler<
       A,
@@ -3232,6 +3246,18 @@ export class IoTrustanchorQuickloginNS {
     >,
   ) {
     const nsid = 'io.trustanchor.quicklogin.status' // @ts-ignore
+    return this._server.xrpc.method(nsid, cfg)
+  }
+
+  unlink<A extends Auth = void>(
+    cfg: MethodConfigOrHandler<
+      A,
+      IoTrustanchorQuickloginUnlink.QueryParams,
+      IoTrustanchorQuickloginUnlink.HandlerInput,
+      IoTrustanchorQuickloginUnlink.HandlerOutput
+    >,
+  ) {
+    const nsid = 'io.trustanchor.quicklogin.unlink' // @ts-ignore
     return this._server.xrpc.method(nsid, cfg)
   }
 }

@@ -15022,6 +15022,31 @@ export const schemaDict = {
       },
     },
   },
+  IoTrustanchorQuickloginGetLink: {
+    lexicon: 1,
+    id: 'io.trustanchor.quicklogin.getLink',
+    defs: {
+      main: {
+        type: 'procedure',
+        description: 'Get QuickLogin link status for the current account.',
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['linked'],
+            properties: {
+              linked: {
+                type: 'boolean',
+              },
+              provider: {
+                type: 'string',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   IoTrustanchorQuickloginInit: {
     lexicon: 1,
     id: 'io.trustanchor.quicklogin.init',
@@ -15219,6 +15244,28 @@ export const schemaDict = {
               expiresAt: {
                 type: 'string',
                 format: 'datetime',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  IoTrustanchorQuickloginUnlink: {
+    lexicon: 1,
+    id: 'io.trustanchor.quicklogin.unlink',
+    defs: {
+      main: {
+        type: 'procedure',
+        description: 'Unlink QuickLogin identity from the current account.',
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['ok'],
+            properties: {
+              ok: {
+                type: 'boolean',
               },
             },
           },
@@ -20700,9 +20747,11 @@ export const ids = {
   ComAtprotoTempRevokeAccountCredentials:
     'com.atproto.temp.revokeAccountCredentials',
   IoTrustanchorQuickloginCallback: 'io.trustanchor.quicklogin.callback',
+  IoTrustanchorQuickloginGetLink: 'io.trustanchor.quicklogin.getLink',
   IoTrustanchorQuickloginInit: 'io.trustanchor.quicklogin.init',
   IoTrustanchorQuickloginLogin: 'io.trustanchor.quicklogin.login',
   IoTrustanchorQuickloginStatus: 'io.trustanchor.quicklogin.status',
+  IoTrustanchorQuickloginUnlink: 'io.trustanchor.quicklogin.unlink',
   ToolsOzoneCommunicationCreateTemplate:
     'tools.ozone.communication.createTemplate',
   ToolsOzoneCommunicationDefs: 'tools.ozone.communication.defs',
